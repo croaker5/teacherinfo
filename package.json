@@ -1,0 +1,19 @@
+{
+  "name": "teacherinfo",
+  "version": "1.0.0",
+  "description": "teacher information center for sspku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/croaker5/teacherinfo.git"
+  },
+  "author": "Wang Ji  Wang Yibo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/croaker5/teacherinfo/issues"
+  },
+  "homepage": "https://github.com/croaker5/teacherinfo#readme"
+}
