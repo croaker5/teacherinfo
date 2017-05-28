@@ -14,7 +14,8 @@
 <body ontouchstart>
 <div class="page">
     <div class="page__hd">
-        <h1 class="page__title">荆琦</h1>
+        <h1 class="page__title"><%= data.name%></h1>
+        <img src="<%=data.imgurl %>"/>
     </div>
     <div class="page__bd">
         <div class="weui-cells">
@@ -22,44 +23,28 @@
                 <div class="weui-cell__bd">
                     <p>性别</p>
                 </div>
-                <div class="weui-cell__ft">女</div>
+                <div class="weui-cell__ft"><%= data.gender%></div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>职称</p>
                 </div>
-                <div class="weui-cell__ft">副教授</div>
-            </div>
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <p>是否兼职</p>
-                </div>
-                <div class="weui-cell__ft">否</div>
+                <div class="weui-cell__ft"><%=data.title %></div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>E-mail</p>
                 </div>
-                <div class="weui-cell__ft">jingqi@pku.edu.cn</div>
+                <div class="weui-cell__ft"><%=data.mail%></div>
             </div>
+
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <p>民族</p>
+                    <p>手机</p>
                 </div>
-                <div class="weui-cell__ft">汉</div>
+                <div class="weui-cell__ft"><%=data.telephone %></div>
             </div>
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <p>职务</p>
-                </div>
-                <div class="weui-cell__ft">。。。</div>
-            </div>
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <p>介绍</p>
-                </div>
-                <div class="weui-cell__ft">。。。</div>
-            </div>
+
         </div>
 
     </div>

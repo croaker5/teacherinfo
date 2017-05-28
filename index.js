@@ -12,19 +12,17 @@ var access_token;
 
 var code;
 var teacherID;
+var body;
 
 var app = express();
 
 // app.set('views',path.join(__dirname,'views'));
-// app.set('view engine','ejs');
+app.set('view engine','ejs');
 
 app.use(express.static(__dirname));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-
-later.date.localTime();
-console.log("Now:" + new Date());
 
 // var sched = later.parse.recur().every(1).hour();
 // next = later.schedule(sched).next(10);
@@ -88,10 +86,10 @@ function obtainteacherID(){
         });
         res.on('end', function () {   //在发生end事件时对chunk进行解析
             var body = JSON.parse(bodyChunks);
-            console.log("the body is :"+body);
             if (body.UserId) {
-                teacherID = body.UserId;
                 //saveAccessToken(access_token);
+                console.log("test:"+body);
+                teacherID = body.UserId;
                 console.log("the id is "+body.UserId);
             } else {
                 console.dir(body);
@@ -106,11 +104,39 @@ function obtainteacherID(){
 app.use(function (req,res,next) {
 	obtaincode(req,res);
 	obtainteacherID();
+
 	next();
 })
 app.get('/personalinfo',function(req,res){
+    var options = {
+        hostname: 'api.mysspku.com',
+        path: '/index.php/V2/TeacherInfo/getDetail?teacherid=12154545&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        rejectUnauthorized:false
+    };
+    var request = https.get(options, function (response) {
+        var bodyChunks = '';
+        response.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
+            bodyChunks += chunk;
+        });
+        response.on('end', function () {   //在发生end事件时对chunk进行解析
+            body = JSON.parse(bodyChunks);
+            console.dir(body);
 
-	res.sendFile(__dirname+'/personalinfo.html');
+        });
+
+    });
+
+    if (body) {
+        res.render('personalinfo', {
+            data: body.data
+        })
+    }else {
+        console.log("the body is null!");
+    }
+    request.on('error', function (e) {
+        console.log('ERROR: ' + e.message);
+    });
+
 });
 app.get('/studentinfo',function(req,res){
     res.sendFile(__dirname+'/studentinfo.html');
