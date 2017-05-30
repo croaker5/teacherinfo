@@ -1,10 +1,11 @@
 var express = require('express');
-// var path = require ('path');
+var path = require ('path');
 var bodyParser = require('body-parser');
 var crypto = require('crypto');
 var qs = require('qs');
 var later = require('later');
 var https = require('https');
+var async = require('async');
 
 var corpid = "wx1d3765eb45497a18";
 var corpsecret = "vy8wF3w6a83ET-5Qp7e0zmAlvGVRsmhQPFVlOGLw0bPH7khRLdgeBCAgsahYp-EP";
@@ -16,13 +17,14 @@ var body;
 
 var app = express();
 
-// app.set('views',path.join(__dirname,'views'));
+app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
 app.use(express.static(__dirname));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));//设置中间件仅仅解析使用urlencoded编码的请求，extended设置为true的含义是
+                                               //使用qs库而不是querystring库解析数据，并且解析出的键值对的值可以是任意类型
 
 // var sched = later.parse.recur().every(1).hour();
 // next = later.schedule(sched).next(10);
@@ -62,24 +64,21 @@ function test() {
     });
 }
 
-function obtaincode(req,res) {
-	if(code) return;
+
+function obtainteacherID(req){
+
+    if(code) return;
     var query = require('url').parse(req.url).query;
     var params = qs.parse(query);
     console.log("The code is "+ params.code);
     code = params.code;
 
-}
-function obtainteacherID(){
-    if(teacherID) return ;
-    // var options = {
-    //     hostname: 'qyapi.weixin.qq.com',
-    //     path: '/cgi-bin/user/getuserinfo?access_token=' + access_token + '&code=' + code
-    // };
+
     console.log("current token: "+access_token);
     console.log("current code : "+code);
+
     var link ="https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token="+access_token+"&code="+code;
-    var req = https.get(link, function (res) {
+    var request = https.get(link, function (res) {
         var bodyChunks = '';
         res.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
             bodyChunks += chunk;
@@ -96,18 +95,12 @@ function obtainteacherID(){
             }
         });
     });
-    req.on('error', function (e) {
+    request.on('error', function (e) {
         console.log('ERROR: ' + e.message);
     });
 
 }
-app.use(function (req,res,next) {
-	obtaincode(req,res);
-	obtainteacherID();
-
-	next();
-})
-app.get('/personalinfo',function(req,res){
+function obtainteacherinfo() {
     var options = {
         hostname: 'api.mysspku.com',
         path: '/index.php/V2/TeacherInfo/getDetail?teacherid=12154545&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
@@ -121,19 +114,48 @@ app.get('/personalinfo',function(req,res){
         response.on('end', function () {   //在发生end事件时对chunk进行解析
             body = JSON.parse(bodyChunks);
             console.dir(body);
+            response.emit('finished');
 
         });
 
     });
 
-    if (body) {
-        res.render('personalinfo', {
-            data: body.data
-        })
-    }else {
-        console.log("the body is null!");
-    }
-    request.on('error', function (e) {
+}
+// app.use(function (req,res,next) {
+//
+// 	obtainteacherID(req);
+// 	next();
+//
+// })
+// app.use(function (req,res,next) {
+//
+//     obtainteacherinfo();
+// 	next();
+//
+// })
+
+app.get('/personalinfo',function(req,res){
+    async.series([
+        obtainteacherID(req),
+        obtainteacherinfo(),
+        function () {
+
+            if (body.data)
+            {
+                res.render('personalinfo', {
+                        data: body.data
+                    }
+                )
+            }
+
+        }]);
+    // obtainteacherID(req);
+    // obtainteacherinfo();
+    // res.render('personalinfo', {
+    //         data: body.data
+    //     }
+    // )
+    req.on('error', function (e) {
         console.log('ERROR: ' + e.message);
     });
 
