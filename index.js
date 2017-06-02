@@ -14,6 +14,8 @@ var access_token;
 var code;
 var teacherID;
 var body;
+var IDflag = false;
+var bodyflag = true;
 
 var app = express();
 
@@ -52,7 +54,6 @@ function test() {
             if (body.access_token) {
                 access_token = body.access_token;
                 //saveAccessToken(access_token);
-                console.log("test:"+body)
                 console.log("the token is &"+access_token+"&");
             } else {
                 console.dir(body);
@@ -64,10 +65,8 @@ function test() {
     });
 }
 
-
 function obtainteacherID(req){
 
-    if(code) return;
     var query = require('url').parse(req.url).query;
     var params = qs.parse(query);
     console.log("The code is "+ params.code);
@@ -87,8 +86,9 @@ function obtainteacherID(req){
             var body = JSON.parse(bodyChunks);
             if (body.UserId) {
                 //saveAccessToken(access_token);
-                console.log("test:"+body);
+                console.log("body:"+body);
                 teacherID = body.UserId;
+                IDflag = true;
                 console.log("the id is "+body.UserId);
             } else {
                 console.dir(body);
@@ -97,27 +97,6 @@ function obtainteacherID(req){
     });
     request.on('error', function (e) {
         console.log('ERROR: ' + e.message);
-    });
-
-}
-function obtainteacherinfo() {
-    var options = {
-        hostname: 'api.mysspku.com',
-        path: '/index.php/V2/TeacherInfo/getDetail?teacherid=12154545&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-        rejectUnauthorized:false
-    };
-    var request = https.get(options, function (response) {
-        var bodyChunks = '';
-        response.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
-            bodyChunks += chunk;
-        });
-        response.on('end', function () {   //在发生end事件时对chunk进行解析
-            body = JSON.parse(bodyChunks);
-            console.dir(body);
-            response.emit('finished');
-
-        });
-
     });
 
 }
@@ -135,33 +114,65 @@ function obtainteacherinfo() {
 // })
 
 app.get('/personalinfo',function(req,res){
-    async.series([
-        obtainteacherID(req),
-        obtainteacherinfo(),
-        function () {
+    if(IDflag == false)
+        obtainteacherID(req);
+    var options = {
+        hostname: 'api.mysspku.com',
+        path: '/index.php/V2/TeacherInfo/getDetail?teacherid='+teacherID+'&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        rejectUnauthorized:false
+    };
+    var request = https.get(options, function (response) {
+        var bodyChunks = '';
+        response.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
+            bodyChunks += chunk;
+        });
+        response.on('end', function () {   //在发生end事件时对chunk进行解析
+            body = JSON.parse(bodyChunks);
+            console.dir(body);
+            res.render('personalinfo',{
+                data: body.data
+            })
 
-            if (body.data)
-            {
-                res.render('personalinfo', {
-                        data: body.data
-                    }
-                )
-            }
+        });
 
-        }]);
-    // obtainteacherID(req);
-    // obtainteacherinfo();
-    // res.render('personalinfo', {
-    //         data: body.data
-    //     }
-    // )
+    });
+
+
+
     req.on('error', function (e) {
         console.log('ERROR: ' + e.message);
     });
 
 });
 app.get('/studentinfo',function(req,res){
-    res.sendFile(__dirname+'/studentinfo.html');
+    if(IDflag == false)
+        obtainteacherID(req);
+    var options = {
+        hostname: 'api.mysspku.com',
+        path: '/index.php/V2/TeacherInfo/getDetail?teacherid='+teacherID+'&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        rejectUnauthorized:false
+    };
+    var request = https.get(options, function (response) {
+        var bodyChunks = '';
+        response.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
+            bodyChunks += chunk;
+        });
+        response.on('end', function () {   //在发生end事件时对chunk进行解析
+            body = JSON.parse(bodyChunks);
+            console.dir(body);
+            res.render('studentinfo',{
+                data: body.data
+            })
+
+        });
+
+    });
+
+
+
+    req.on('error', function (e) {
+        console.log('ERROR: ' + e.message);
+    });
 });
 app.get('/courseinfo',function(req,res){
     res.sendFile(__dirname+'/courseinfo.html');
@@ -170,202 +181,6 @@ app.get('/workloadinfo',function(req,res){
     res.sendFile(__dirname+'/workloadinfo.html');
 });
 
-// app.get('/register',function(req,res){
-// 	if(req.session.user){
-// 		return res.redirect('/');
-// 	}
-// 	res.render('register',{
-// 		user:req.session.user,
-// 		username:'',
-// 		password:'',
-// 		passwordRepeat:'',
-// 		err:'',
-// 		title:'注册'
-// 	});
-// });
-// app.post('/register',function(req,res){
-// 	var username=req.body.username,
-// 		password=req.body.password,
-// 		passwordRepeat=req.body.passwordRepeat;
-// 	//检查输入的用户名密码是否合乎要求
-// 	var err=strCheck.registerCheck(username,password,passwordRepeat);
-// 	if(err!=''){
-// 		console.log(err);
-// 		return res.render('register',{
-// 			user:req.session.user,
-// 			username:username,
-// 			password:password,
-// 			passwordRepeat:passwordRepeat,
-// 			err:err,
-// 			title:'注册'
-// 		});
-// 	}
-//
-// 	//检查用户名是否已经存在，如果不存在则保存该条记录
-// 	User.findOne({username:username},function(err,user){
-// 		if(err){
-// 			console.log(err);
-// 			return res.render('register',{
-// 				user:req.session.user,
-// 				username:username,
-// 				password:password,
-// 				passwordRepeat:passwordRepeat,
-// 				err:'内部错误，请重试！',
-// 				title:'注册'
-// 			});
-// 		}
-// 		if(user){
-// 			console.log('用户名已存在！');
-// 			return res.render('register',{
-// 				user:req.session.user,
-// 				username:username,
-// 				password:password,
-// 				passwordRepeat:passwordRepeat,
-// 				err:'该用户名已被注册！',
-// 				title:'注册'
-// 			});
-// 		}
-// 		//对密码进行md5加密
-// 		var md5=crypto.createHash('md5'),
-// 			md5password=md5.update(password).digest('hex');
-//
-// 		//新建user对象用于保存数据
-// 		var newUser=new User({
-// 			username:username,
-// 			password:md5password
-// 		});
-//
-// 		newUser.save(function(err,doc){
-// 			if(err){
-// 				console.log(err);
-// 				return res.render('register',{
-// 					user:req.session.user,
-// 					username:username,
-// 					password:password,
-// 					passwordRepeat:passwordRepeat,
-// 					err:'内部错误，请重试！',
-// 					title:'注册'
-// 				});
-// 			}
-// 			console.log('用户'+username+'注册成功');
-// 			return res.redirect('/login');
-// 		});
-// 	});
-// });
-//
-// app.get('/login',function(req,res){
-// 	if(req.session.user){
-// 		return res.redirect('/');
-// 	}
-// 	res.render('login',{
-// 		user:req.session.user,
-// 		username:'',
-// 		password:'',
-// 		err:'',
-// 		title:'登录'
-// 	});
-// });
-// app.post('/login',function(req,res){
-// 	var username=req.body.username,
-// 		password=req.body.password,
-// 		rememberMe=req.body.rememberMe;
-// 	if(username.trim().length==0||password.trim().length==0){
-// 		var err='用户名密码不能为空！';
-// 		return res.render('login',{
-// 			user:req.session.user,
-// 			username:username,
-// 			password:password,
-// 			err:err,
-// 			title:'登录'
-// 		});
-// 	}
-// 	User.findOne({username:username},function(err,user){
-// 		if(err){
-// 			console.log(err)
-// 			return res.redirect('/login');
-// 		}
-// 		if(!user){
-// 			console.log('用户不存在！');
-// 			return res.render('login',{
-// 				user:req.session.user,
-// 				username:username,
-// 				password:password,
-// 				err:'用户不存在！',
-// 				title:'登录'
-// 			});
-// 		}
-// 		var md5= crypto.createHash('md5'),
-// 			md5password=md5.update(password).digest('hex');
-// 		if(user.password!==md5password){
-// 			console.log('密码错误！');
-// 			return res.render('login',{
-// 				user:req.session.user,
-// 				username:username,
-// 				password:password,
-// 				err:'密码错误！',
-// 				title:'登录'
-// 			});
-// 		}
-// 		console.log('用户'+username+'登录系统！');
-// 		user.password=null;
-// 		delete user.password;
-// 		req.session.user=user;
-// 		//用户点击记住我，将session.cookie.maxAge设为1000*60*60*24*7
-// 		if(rememberMe){
-// 			req.session.cookie.maxAge=1000*60*60*24*7;
-// 		}
-// 		return res.redirect('/');
-// 	});
-// });
-// app.get('/quit',function(req,res){
-// 	req.session.user = null;
-// 	console.log('退出');
-// 	return res.redirect('/login');
-//
-// 	});
-//
-// app.get('/post',function(req,res){
-// 	console.log('发布');
-// 	res.render('post',{
-// 		user:req.session.user,
-// 		title: '发布'
-// 	});
-// });
-// app.post('/post',function(req,res){
-// 	var note = new Note({
-// 		title: req.body.title,
-// 		author:req.session.user.username,
-// 		tag:req.body.tag,
-// 		content:req.body.content
-// 	});
-// 	note.save(function(err,doc){
-// 		if(err){
-// 			console.log(err);
-// 			return res.redirect('/post');
-// 		}
-// 		console.log('文章发表成功');
-// 		return res.redirect('/');
-// 	});
-// });
-// app.get('/detail/:_id',function(req,res){
-// 	console.log('查看笔记！');
-// 	Note.findOne({_id:req.params._id})
-// 		.exec(function(err,art){
-// 			if(err){
-// 				console.log(err);
-// 				return res.redirect('/');
-// 			}
-// 			if(art){
-// 				res.render('detail',{
-// 					title:'笔记详情',
-// 					user:req.session.user,
-// 					art: art,
-// 					moment:moment
-// 				});
-// 			}
-// 		});
-//
-// });
 
 
 app.listen(3000,function(req,res){
