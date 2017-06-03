@@ -10,6 +10,16 @@ var async = require('async');
 var corpid = "wx1d3765eb45497a18";
 var corpsecret = "vy8wF3w6a83ET-5Qp7e0zmAlvGVRsmhQPFVlOGLw0bPH7khRLdgeBCAgsahYp-EP";
 var access_token;
+var students2007 = new Object();
+var students2008 = new Object();
+var students2009 = new Object();
+var students2010 = new Object();
+var students2011 = new Object();
+var students2012 = new Object();
+var students2013 = new Object();
+var students2014 = new Object();
+var students2015 = new Object();
+var students2016 = new Object();
 
 var code;
 var teacherID;
@@ -160,9 +170,49 @@ app.get('/studentinfo',function(req,res){
         response.on('end', function () {   //在发生end事件时对chunk进行解析
             body = JSON.parse(bodyChunks);
             console.dir(body);
-            res.render('studentinfo',{
-                data: body.data
-            })
+
+            for(var i=0;i<body.data.students.length;i++)
+            {
+               switch (body.data.students[i].grade){
+
+                   case "2007":
+                       students2007 = (students2007 || []).push(body.data.students[i]);
+                       break;
+                   case "2008":
+                       students2008 = (students2008 || []).push(body.data.students[i]);
+                       break;
+                   case "2009":
+                       students2009 = (students2009 || []).push(body.data.students[i]);
+                       break;
+                   case "2010":
+                       students2010 = (students2010 || []).push(body.data.students[i]);
+                       break;
+                   case "2011":
+                       students2011 = (students2011 || []).push(body.data.students[i]);
+                       break;
+                   case "2012":
+                       students2012 = (students2012 || []).push(body.data.students[i]);
+                       break;
+                   case "2013":
+                       students2013 = (students2013 || []).push(body.data.students[i]);
+                       break;
+                   case "2014":
+                       students2014 = (students2014 || []).push(body.data.students[i]);
+                       break;
+                   case "2015":
+                       students2015 = (students2015 || []).push(body.data.students[i]);
+                       break;
+                   case "2016":
+                       students2016 = (students2016 || []).push(body.data.students[i]);
+                       break;
+
+               }
+            }
+            console.log(students2007);
+            // res.render('studentinfo',{
+            //     data: body.data
+            // })
+            res.sendFile(__dirname+'/views/test.html');
 
         });
 
