@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad13195c-90c2-421d-aff5-c15a868f499f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/studentnotfound.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/1.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/actions.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/address.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/buttons.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/calendar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/cell.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/code.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/dialog.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/form.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/grid.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/photos.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/pull.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/select.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-weui/screenshot/toast.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/courseinfo.ejs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/workloadinfo.ejs" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/studentinfo.ejs" afterPath="$PROJECT_DIR$/views/studentinfo.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/test.html" afterPath="$PROJECT_DIR$/views/test.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,8 +22,8 @@
             <file leaf-file-name="studentinfo.ejs" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/views/studentinfo.ejs">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="190">
-                    <caret line="10" column="87" lean-forward="true" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+                  <state relative-caret-position="620">
+                    <caret line="343" column="7" lean-forward="true" selection-start-line="339" selection-start-column="4" selection-end-line="343" selection-end-column="7" />
                     <folding>
                       <element signature="e#1526#1532#0#HTML" expanded="true" />
                       <element signature="e#1544#1550#0#HTML" expanded="true" />
@@ -184,13 +164,13 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="250" column="19" lean-forward="false" selection-start-line="250" selection-start-column="19" selection-end-line="250" selection-end-column="19" />
+            <state relative-caret-position="228">
+              <caret line="259" column="27" lean-forward="false" selection-start-line="259" selection-start-column="27" selection-end-line="259" selection-end-column="27" />
               <folding>
                 <element signature="n#!!block;n#test#0" expanded="false" />
                 <element signature="n#!!block;n#obtainteacherID#0" expanded="false" />
-                <element signature="e#3355#3391#0" expanded="false" />
-                <element signature="e#3573#4382#0" expanded="false" />
+                <element signature="e#3376#3412#0" expanded="false" />
+                <element signature="e#3594#4403#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -244,8 +224,8 @@
         <option value="$PROJECT_DIR$/views/test.html" />
         <option value="$PROJECT_DIR$/views/studentdetail.ejs" />
         <option value="$PROJECT_DIR$/views/studentnotfound.html" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/views/studentinfo.ejs" />
+        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -321,20 +301,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teacherinfo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teacherinfo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="style" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -518,12 +484,12 @@
       <workItem from="1496390149638" duration="12310000" />
       <workItem from="1496445585886" duration="20219000" />
       <workItem from="1496489229992" duration="14801000" />
-      <workItem from="1496536692263" duration="17347000" />
+      <workItem from="1496536692263" duration="19253000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199458000" />
+    <option name="totallyTimeSpent" value="201364000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -536,7 +502,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18222892" sideWeight="0.49293286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -855,23 +820,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="250" column="19" lean-forward="false" selection-start-line="250" selection-start-column="19" selection-end-line="250" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!block;n#test#0" expanded="false" />
-            <element signature="n#!!block;n#obtainteacherID#0" expanded="false" />
-            <element signature="e#3355#3391#0" expanded="false" />
-            <element signature="e#3573#4382#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/studentinfo.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="87" lean-forward="true" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+        <state relative-caret-position="620">
+          <caret line="343" column="7" lean-forward="true" selection-start-line="339" selection-start-column="4" selection-end-line="343" selection-end-column="7" />
           <folding>
             <element signature="e#1526#1532#0#HTML" expanded="true" />
             <element signature="e#1544#1550#0#HTML" expanded="true" />
@@ -993,6 +945,19 @@
             <element signature="e#10985#10991#0#HTML" expanded="true" />
             <element signature="e#10991#10997#0#HTML" expanded="true" />
             <element signature="e#10997#11003#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="259" column="27" lean-forward="false" selection-start-line="259" selection-start-column="27" selection-end-line="259" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!block;n#test#0" expanded="false" />
+            <element signature="n#!!block;n#obtainteacherID#0" expanded="false" />
+            <element signature="e#3376#3412#0" expanded="false" />
+            <element signature="e#3594#4403#0" expanded="false" />
           </folding>
         </state>
       </provider>

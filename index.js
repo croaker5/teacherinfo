@@ -23,6 +23,7 @@ var students2016 = [];
 var code;
 var teacherID;
 var body;
+var studentinfobody;
 var IDflag = false;
 var bodyflag = true;
 var studentinfoflag = false;
@@ -168,42 +169,42 @@ app.get('/studentinfo',function(req,res){
                 bodyChunks += chunk;
             });
             response.on('end', function () {   //在发生end事件时对chunk进行解析
-                body = JSON.parse(bodyChunks);
+                studentinfobody = JSON.parse(bodyChunks);
                 console.dir(body);
 
-                for(var i=0;i<body.data.students.length;i++)
+                for(var i=0;i<studentinfobody.data.students.length;i++)
                 {
-                    switch (body.data.students[i].grade){
+                    switch (studentinfobody.data.students[i].grade){
 
                         case "2007":
-                            students2007.push(body.data.students[i]);
+                            students2007.push(studentinfobody.data.students[i]);
                             break;
                         case "2008":
-                            students2008.push(body.data.students[i]);
+                            students2008.push(studentinfobody.data.students[i]);
                             break;
                         case "2009":
-                            students2009.push(body.data.students[i]);
+                            students2009.push(studentinfobody.data.students[i]);
                             break;
                         case "2010":
-                            students2010.push(body.data.students[i]);
+                            students2010.push(studentinfobody.data.students[i]);
                             break;
                         case "2011":
-                            students2011.push(body.data.students[i]);
+                            students2011.push(studentinfobody.data.students[i]);
                             break;
                         case "2012":
-                            students2012.push(body.data.students[i]);
+                            students2012.push(studentinfobody.data.students[i]);
                             break;
                         case "2013":
-                            students2013.push(body.data.students[i]);
+                            students2013.push(studentinfobody.data.students[i]);
                             break;
                         case "2014":
-                            students2014.push(body.data.students[i]);
+                            students2014.push(studentinfobody.data.students[i]);
                             break;
                         case "2015":
-                            students2015.push(body.data.students[i]);
+                            students2015.push(studentinfobody.data.students[i]);
                             break;
                         case "2016":
-                            students2016.push(body.data.students[i]);
+                            students2016.push(studentinfobody.data.students[i]);
                             break;
 
                     }
@@ -256,17 +257,17 @@ app.post('/studentinfo',function (req,res) {
      console.log("start post method");
      var studentname = req.body.studentname;
      var i = 0;
-     for(;i<body.data.students.length;i++){
+     for(;i<studentinfobody.data.students.length;i++){
 
-             if(studentname == body.data.students[i].name) {
+             if(studentname == studentinfobody.data.students[i].name) {
                  res.render('studentdetail', {
-                     data: body.data.students[i]
+                     data: studentinfobody.data.students[i]
                  });
                  break;
              }
 
      }
-     if(i == body.data.students.length)
+     if(i == studentinfobody.data.students.length)
          res.sendFile(__dirname+'/views/studentnotfound.html');
 
 });
