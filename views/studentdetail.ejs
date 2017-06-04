@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>学生详细信息</title>
+    <link rel="stylesheet" href="../weui/dist/style/weui.css"/>
+    <!--<link rel="stylesheet" href="./weui/dist/example/example.css">-->
+</head>
+
+
+<body ontouchstart>
+<div class="page">
+
+    <h1><%= data.name%>
+    </h1>
+
+
+    <div class="page__bd">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>学号</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.stuid %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>性别</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.gender %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>学籍类型</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.type_name %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>学位类型</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.degree_type_name %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>专业</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.major_name %></div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>研究方向</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.researcharea %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>学习地点</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.location %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>年级</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.grade %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>入学日期</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.startyearmonth %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>lxconfirm</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.lxConfirm%></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>jxconfirm</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.jxConfirm %></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>是否开题</p>
+                </div>
+                <div class="weui-cell__ft">
+                 <% if (data.ktconfirm == 1) {%>
+                    是
+                    <%} else {%>
+                    否
+                    <%}%>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>论文答辩</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.paperPass%></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>手机</p>
+                </div>
+                <div class="weui-cell__ft"><%= data.telephone %></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

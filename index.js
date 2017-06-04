@@ -5,28 +5,27 @@ var crypto = require('crypto');
 var qs = require('qs');
 var later = require('later');
 var https = require('https');
-var async = require('async');
 
 var corpid = "wx1d3765eb45497a18";
 var corpsecret = "vy8wF3w6a83ET-5Qp7e0zmAlvGVRsmhQPFVlOGLw0bPH7khRLdgeBCAgsahYp-EP";
 var access_token;
-var students2007 = new Object();
-var students2008 = new Object();
-var students2009 = new Object();
-var students2010 = new Object();
-var students2011 = new Object();
-var students2012 = new Object();
-var students2013 = new Object();
-var students2014 = new Object();
-var students2015 = new Object();
-var students2016 = new Object();
+var students2007 = [];
+var students2008 = [];
+var students2009 = [];
+var students2010 = [];
+var students2011 = [];
+var students2012 = [];
+var students2013 = [];
+var students2014 = [];
+var students2015 = [];
+var students2016 = [];
 
 var code;
 var teacherID;
 var body;
 var IDflag = false;
 var bodyflag = true;
-
+var studentinfoflag = false;
 var app = express();
 
 app.set('views',path.join(__dirname,'views'));
@@ -38,12 +37,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));//设置中间件仅仅解析使用urlencoded编码的请求，extended设置为true的含义是
                                                //使用qs库而不是querystring库解析数据，并且解析出的键值对的值可以是任意类型
 
-// var sched = later.parse.recur().every(1).hour();
-// next = later.schedule(sched).next(10);
-// console.log(next);
+var sched = later.parse.recur().every(1).hour();
+next = later.schedule(sched).next(10);
+console.log(next);
 
-// var timer = later.setInterval(test, sched);
-setTimeout(test, 2000);
+var timer = later.setInterval(test, sched);
+setTimeout(test, 1000);
 
 function test() {
     console.log(new Date());
@@ -157,66 +156,95 @@ app.get('/personalinfo',function(req,res){
 app.get('/studentinfo',function(req,res){
     if(IDflag == false)
         obtainteacherID(req);
-    var options = {
-        hostname: 'api.mysspku.com',
-        path: '/index.php/V2/TeacherInfo/getDetail?teacherid='+teacherID+'&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-        rejectUnauthorized:false
-    };
-    var request = https.get(options, function (response) {
-        var bodyChunks = '';
-        response.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
-            bodyChunks += chunk;
+    if(studentinfoflag == false){
+        var options = {
+            hostname: 'api.mysspku.com',
+            path: '/index.php/V2/TeacherInfo/getStudents?teacherid='+teacherID+'&token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            rejectUnauthorized:false
+        };
+        var request = https.get(options, function (response) {
+            var bodyChunks = '';
+            response.on('data', function (chunk) {//在发生data事件时进行字符串的拼接
+                bodyChunks += chunk;
+            });
+            response.on('end', function () {   //在发生end事件时对chunk进行解析
+                body = JSON.parse(bodyChunks);
+                console.dir(body);
+
+                for(var i=0;i<body.data.students.length;i++)
+                {
+                    switch (body.data.students[i].grade){
+
+                        case "2007":
+                            students2007.push(body.data.students[i]);
+                            break;
+                        case "2008":
+                            students2008.push(body.data.students[i]);
+                            break;
+                        case "2009":
+                            students2009.push(body.data.students[i]);
+                            break;
+                        case "2010":
+                            students2010.push(body.data.students[i]);
+                            break;
+                        case "2011":
+                            students2011.push(body.data.students[i]);
+                            break;
+                        case "2012":
+                            students2012.push(body.data.students[i]);
+                            break;
+                        case "2013":
+                            students2013.push(body.data.students[i]);
+                            break;
+                        case "2014":
+                            students2014.push(body.data.students[i]);
+                            break;
+                        case "2015":
+                            students2015.push(body.data.students[i]);
+                            break;
+                        case "2016":
+                            students2016.push(body.data.students[i]);
+                            break;
+
+                    }
+                }
+                studentinfoflag = true;
+                console.log(students2007);
+                res.render('studentinfo',{
+                    students2016:students2016,
+                    students2015:students2015,
+                    students2014:students2014,
+                    students2013:students2013,
+                    students2012:students2012,
+                    students2011:students2011,
+                    students2010:students2010,
+                    students2009:students2009,
+                    students2008:students2008,
+                    students2007:students2007,
+                    studentname:''
+
+                });
+
+            });
+
         });
-        response.on('end', function () {   //在发生end事件时对chunk进行解析
-            body = JSON.parse(bodyChunks);
-            console.dir(body);
-
-            for(var i=0;i<body.data.students.length;i++)
-            {
-               switch (body.data.students[i].grade){
-
-                   case "2007":
-                       students2007 = (students2007 || []).push(body.data.students[i]);
-                       break;
-                   case "2008":
-                       students2008 = (students2008 || []).push(body.data.students[i]);
-                       break;
-                   case "2009":
-                       students2009 = (students2009 || []).push(body.data.students[i]);
-                       break;
-                   case "2010":
-                       students2010 = (students2010 || []).push(body.data.students[i]);
-                       break;
-                   case "2011":
-                       students2011 = (students2011 || []).push(body.data.students[i]);
-                       break;
-                   case "2012":
-                       students2012 = (students2012 || []).push(body.data.students[i]);
-                       break;
-                   case "2013":
-                       students2013 = (students2013 || []).push(body.data.students[i]);
-                       break;
-                   case "2014":
-                       students2014 = (students2014 || []).push(body.data.students[i]);
-                       break;
-                   case "2015":
-                       students2015 = (students2015 || []).push(body.data.students[i]);
-                       break;
-                   case "2016":
-                       students2016 = (students2016 || []).push(body.data.students[i]);
-                       break;
-
-               }
-            }
-            console.log(students2007);
-            // res.render('studentinfo',{
-            //     data: body.data
-            // })
-            res.sendFile(__dirname+'/views/test.html');
+    }else
+    {
+        res.render('studentinfo',{
+            students2016:students2016,
+            students2015:students2015,
+            students2014:students2014,
+            students2013:students2013,
+            students2012:students2012,
+            students2011:students2011,
+            students2010:students2010,
+            students2009:students2009,
+            students2008:students2008,
+            students2007:students2007,
+            studentname:''
 
         });
-
-    });
+    }
 
 
 
@@ -224,11 +252,29 @@ app.get('/studentinfo',function(req,res){
         console.log('ERROR: ' + e.message);
     });
 });
+app.post('/studentinfo',function (req,res) {
+     console.log("start post method");
+     var studentname = req.body.studentname;
+     var i = 0;
+     for(;i<body.data.students.length;i++){
+
+             if(studentname == body.data.students[i].name) {
+                 res.render('studentdetail', {
+                     data: body.data.students[i]
+                 });
+                 break;
+             }
+
+     }
+     if(i == body.data.students.length)
+         res.sendFile(__dirname+'/views/studentnotfound.html');
+
+});
 app.get('/courseinfo',function(req,res){
-    res.sendFile(__dirname+'/courseinfo.html');
+    res.sendFile(__dirname+'/views/courseinfo.html');
 });
 app.get('/workloadinfo',function(req,res){
-    res.sendFile(__dirname+'/workloadinfo.html');
+    res.sendFile(__dirname+'/views/workloadinfo.html');
 });
 
 

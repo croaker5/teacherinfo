@@ -154,6 +154,8 @@
             <header class='demos-header'>
                 <h1 class="demos-title">全部学生</h1>
             </header>
+            <div class="page__bd">
+            <div class="weui-panel weui-panel_access">
             <div class="weui-panel__hd">2016级</div>
             <div class="weui-panel__bd">
                 <div class="weui-media-box weui-media-box_appmsg">
@@ -169,15 +171,103 @@
                     </div>
                 </div>
             </div>
+            </div>
+            </div>
 
         </div>
         <div id="tab3" class="weui-tab__bd-item">
-            <h1>页面三</h1>
+            <header class='demos-header'>
+                <h1 class="demos-title">答辩状态</h1>
+            </header>
+            <div class="page">
+                <div class="page__bd">
+                    <div class="weui-cells__title">2014级</div>
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>学号</p>
+                            </div>
+                            <div class="weui-cell__ft">*******</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>是否实习</p>
+                            </div>
+                            <div class="weui-cell__ft">否</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>是否开题</p>
+                            </div>
+                            <div class="weui-cell__ft">否</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>答辩状态</p>
+                            </div>
+                            <div class="weui-cell__ft">未答辩</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>是否在校生</p>
+                            </div>
+                            <div class="weui-cell__ft">是</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <div id="tab4" class="weui-tab__bd-item">
-            <h1>页面四</h1>
+            <header class='demos-header'>
+                <h1 class="demos-title">查询</h1>
+            </header>
+            <div class="weui-cells__title">学生信息</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" id="namesearch"  placeholder="请输入学生姓名">
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">性别</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">入学年份</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">2016</option>
+                            <option value="2">2015</option>
+                            <option value="3">2014</option>
+                            <option value="4">2013</option>
+                            <option value="5">2012</option>
+                            <option value="6">2011</option>
+                            <option value="7">2010</option>
+                            <option value="8">2009</option>
+                            <option value="9">2008</option>
+                            <option value="10">2007</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-btn-area">
+                <a class="weui-btn weui-btn_primary" href="/search" id="showTooltips">确定</a>
+            </div>
         </div>
     </div>
+
+
 
     <div class="weui-tabbar">
         <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
@@ -198,22 +288,30 @@
             </div>
             <p class="weui-tabbar__label">未通过答辩</p>
         </a>
-        <!--<a href="#tab4" class="weui-tabbar__item">-->
-            <!--<div class="weui-tabbar__icon">-->
-                <!--<img src="../node_modules/jquery-weui/dist/demos/images/icon_nav_cell.png" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui-tabbar__label">我</p>-->
-        <!--</a>-->
+        <a href="#tab4" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="../node_modules/jquery-weui/dist/demos/images/icon_nav_search_bar.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">查询</p>
+        </a>
     </div>
 </div>
+
 <script src="../node_modules/jquery-weui/dist/lib/jquery-2.1.4.js"></script>
 <script src="../node_modules/jquery-weui/dist/lib/fastclick.js"></script>
-
+<script>
+    $("#showTooltips").click(function() {
+        var namesearch = $('#namesearch').val();
+        if(!namesearch) $.toptip('请输入学生姓名');
+        else $.toptip('提交成功', 'success');
+    });
+</script>
 <script>
     $(function() {
         FastClick.attach(document.body);
     });
 </script>
+<script src="../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
 
 
 </body>

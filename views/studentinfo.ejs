@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -7,426 +6,349 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>学生信息</title>
     <link rel="stylesheet" href="../weui/dist/style/weui.css"/>
-    <!--<link rel="stylesheet" href="./weui/dist/example/example.css"/>-->
-    <!--<link rel="stylesheet" href="./node_modules/jquery-weui/dist/lib/weui.css">-->
     <link rel="stylesheet" href="../node_modules/jquery-weui/dist/css/jquery-weui.css">
-    <script src="../node_modules/jquery-weui/dist/lib/jquery-2.1.4.js"></script>
-    <script src="../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
-
+    <link rel="stylesheet" href="../node_modules/jquery-weui/dist/demos/css/demos.css">
+    <!--<script src="../node_modules/jquery-weui/dist/lib/jquery-2.1.4.js"></script>-->
+    <!--<script src="../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>-->
 </head>
 
 
 <body ontouchstart>
+
+
 <div class="weui-tab">
-    <div class="weui-navbar">
-        <div class="weui-navbar__item weui-navbar__item--on" href="#tab1">
-            16级
-        </div>
-        <div class="weui-navbar__item" href="#tab2">
-            15级
-        </div>
-        <div class="weui-navbar__item" href="#tab3">
-            14级
-        </div>
-    </div>
     <div class="weui-tab__bd">
-        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active ">
-
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <header class='demos-header'>
+                <h1 class="demos-title">应届学生</h1>
+            </header>
             <div class="page">
                 <div class="page__bd">
-                    <div class="weui-cells__title">王霁</div>
-                    <div class="weui-cells">
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>学号</p>
+                    <div class="weui-cells__title">2016级</div>
+                    <div class="weui-panel__bd">
+                        <% for(var i = 0;i<students2016.length;i++) {%>
+                        <div class="weui-panel weui-panel_access">
+                            <div class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title"><%= students2016[i].name%></h4>
+                                    <p class="weui-media-box__desc"><%= students2016[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2016[i].degree_type_name%>
+                                        &nbsp;&nbsp;&nbsp; <% if (students2016[i].ktconfirm == 1) {%>
+                                        已开题
+                                        <%} else {%>
+                                        未开题
+                                        <%}%>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2016[i].telephone%>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="weui-cell__ft">*******</div>
                         </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否实习</p>
+                        <%}%>
+                    </div>
+                    <div class="weui-cells__title">2015级</div>
+                    <div class="weui-panel__bd">
+                        <% for(var i = 0;i<students2015.length;i++) {%>
+                        <div class="weui-panel weui-panel_access">
+                            <div class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title"><%= students2015[i].name%></h4>
+                                    <p class="weui-media-box__desc"><%= students2015[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2015[i].degree_type_name%>
+                                        &nbsp;&nbsp;&nbsp; <% if (students2015[i].ktconfirm == 1) {%>
+                                        已开题
+                                        <%} else {%>
+                                        未开题
+                                        <%}%>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2016[i].telephone%>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="weui-cell__ft">否</div>
                         </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否开题</p>
+                        <%}%>
+                    </div>
+                    <div class="weui-cells__title">2014级</div>
+                    <div class="weui-panel__bd">
+                        <% for(var i = 0;i<students2014.length;i++) {%>
+                        <div class="weui-panel weui-panel_access">
+                            <div class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title"><%= students2014[i].name%></h4>
+                                    <p class="weui-media-box__desc"><%= students2014[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2014[i].degree_type_name%>
+                                        &nbsp;&nbsp;&nbsp; <% if (students2014[i].ktconfirm == 1) {%>
+                                        已开题
+                                        <%} else {%>
+                                        未开题
+                                        <%}%>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2016[i].telephone%>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="weui-cell__ft">否</div>
                         </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>答辩状态</p>
-                            </div>
-                            <div class="weui-cell__ft">未答辩</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否在校生</p>
-                            </div>
-                            <div class="weui-cell__ft">是</div>
-                        </div>
+                        <%}%>
                     </div>
 
-                </div>
-                <div class="page">
-
-                    <div class="page__bd">
-                        <div class="weui-cells__title">邱玄伟</div>
-                        <div class="weui-cells">
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>学号</p>
-                                </div>
-                                <div class="weui-cell__ft">********</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否实习</p>
-                                </div>
-                                <div class="weui-cell__ft">是</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否开题</p>
-                                </div>
-                                <div class="weui-cell__ft">否</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>答辩状态</p>
-                                </div>
-                                <div class="weui-cell__ft">未答辩</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否在校生</p>
-                                </div>
-                                <div class="weui-cell__ft">是</div>
-                            </div>
-
-                        </div>
-
-                    </div>
 
                 </div>
-
-
             </div>
-            <div class="page">
-                <div class="page__bd">
-                    <div class="weui-cells__title">侯博文</div>
-                    <div class="weui-cells">
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>学号</p>
-                            </div>
-                            <div class="weui-cell__ft">********</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否实习</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否开题</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>答辩状态</p>
-                            </div>
-                            <div class="weui-cell__ft">未答辩</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否在校生</p>
-                            </div>
-                            <div class="weui-cell__ft">是</div>
-                        </div>
 
-                    </div>
 
-                </div>
 
-            </div>
+
+
         </div>
         <div id="tab2" class="weui-tab__bd-item">
-
-            <div class="page">
-                <div class="page__bd">
-                    <div class="weui-cells__title">邱玄伟</div>
-                    <div class="weui-cells">
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>学号</p>
-                            </div>
-                            <div class="weui-cell__ft">*******</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否实习</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否开题</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>答辩状态</p>
-                            </div>
-                            <div class="weui-cell__ft">未答辩</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否在校生</p>
-                            </div>
-                            <div class="weui-cell__ft">是</div>
-                        </div>
+            <header class='demos-header'>
+                <h1 class="demos-title">非应届学生</h1>
+            </header>
+            <div class="page__bd">
+            <div class="weui-cells__title">2013级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2013.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2013[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2013[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2013[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2013[i].telephone%>
+                        </p>
                     </div>
-
                 </div>
-                <div class="page">
-                    <div class="page__bd">
-                        <div class="weui-cells__title">王霁</div>
-                        <div class="weui-cells">
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>学号</p>
-                                </div>
-                                <div class="weui-cell__ft">********</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否实习</p>
-                                </div>
-                                <div class="weui-cell__ft">是</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否开题</p>
-                                </div>
-                                <div class="weui-cell__ft">否</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>答辩状态</p>
-                                </div>
-                                <div class="weui-cell__ft">未答辩</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否在校生</p>
-                                </div>
-                                <div class="weui-cell__ft">是</div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
                 </div>
-
-
+                <%}%>
             </div>
-            <div class="page">
-
-                <div class="page__bd">
-                    <div class="weui-cells__title">陈君陶</div>
-                    <div class="weui-cells">
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>学号</p>
-                            </div>
-                            <div class="weui-cell__ft">********</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否实习</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否开题</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>答辩状态</p>
-                            </div>
-                            <div class="weui-cell__ft">未答辩</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否在校生</p>
-                            </div>
-                            <div class="weui-cell__ft">是</div>
-                        </div>
-
+            <div class="weui-cells__title">2012级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2012.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2012[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2012[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2012[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2012[i].telephone%>
+                        </p>
                     </div>
-
                 </div>
+                </div>
+                <%}%>
+            </div>
+            <div class="weui-cells__title">2011级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2011.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2011[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2011[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2011[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2011[i].telephone%>
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <%}%>
+            </div>
+            <div class="weui-cells__title">2010级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2010.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2010[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2010[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2010[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2010[i].telephone%>
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <%}%>
+            </div>
 
-            </div>v>
+            <div class="weui-cells__title">2009级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2009.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2009[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2009[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2009[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2009[i].telephone%>
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <%}%>
+            </div>
+            <div class="weui-cells__title">2008级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2008.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2008[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2008[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2008[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2008[i].telephone%>
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <%}%>
+            </div>
+            <div class="weui-cells__title">2007级</div>
+            <div class="weui-panel__bd">
+                <% for(var i = 0;i<students2007.length;i++) {%>
+                <div class="weui-panel weui-panel_access">
+                <div class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title"><%= students2007[i].name%></h4>
+                        <p class="weui-media-box__desc"><%= students2007[i].type_name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2007[i].degree_type_name%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= students2007[i].telephone%>
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <%}%>
+            </div>
+            </div>
+
         </div>
         <div id="tab3" class="weui-tab__bd-item">
-
-            <div class="page">
-
-                <div class="page__bd">
-                    <div class="weui-cells__title">王霁</div>
-                    <div class="weui-cells">
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>学号</p>
-                            </div>
-                            <div class="weui-cell__ft">*******</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否实习</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否开题</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>答辩状态</p>
-                            </div>
-                            <div class="weui-cell__ft">未答辩</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否在校生</p>
-                            </div>
-                            <div class="weui-cell__ft">是</div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="page">
-                    <div class="page__bd">
-                        <div class="weui-cells__title">邱玄伟</div>
-                        <div class="weui-cells">
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>学号</p>
-                                </div>
-                                <div class="weui-cell__ft">********</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否实习</p>
-                                </div>
-                                <div class="weui-cell__ft">是</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否开题</p>
-                                </div>
-                                <div class="weui-cell__ft">否</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>答辩状态</p>
-                                </div>
-                                <div class="weui-cell__ft">未答辩</div>
-                            </div>
-                            <div class="weui-cell">
-                                <div class="weui-cell__bd">
-                                    <p>是否在校生</p>
-                                </div>
-                                <div class="weui-cell__ft">是</div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
+            <header class='demos-header'>
+                <h1 class="demos-title">答辩状态</h1>
+            </header>
             <div class="page">
                 <div class="page__bd">
-                    <div class="weui-cells__title">侯博文</h1>
+                    <div class="weui-cells__title">2014级</div>
                     <div class="weui-cells">
+                        <% for(var i=0;i<students2014.length;i++) {%>
                         <div class="weui-cell">
                             <div class="weui-cell__bd">
-                                <p>学号</p>
+                                <p><%= students2014[i].name%></p>
                             </div>
-                            <div class="weui-cell__ft">********</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否实习</p>
+                            <div class="weui-cell__ft">
+                                <% if (students2014[i].ktconfirm == 1) {%>
+                                已开题
+                                <%} else {%>
+                                未开题
+                                <%}%>
                             </div>
-                            <div class="weui-cell__ft">否</div>
                         </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否开题</p>
-                            </div>
-                            <div class="weui-cell__ft">否</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>答辩状态</p>
-                            </div>
-                            <div class="weui-cell__ft">未答辩</div>
-                        </div>
-                        <div class="weui-cell">
-                            <div class="weui-cell__bd">
-                                <p>是否在校生</p>
-                            </div>
-                            <div class="weui-cell__ft">是</div>
-                        </div>
-
+                        <% }%>
                     </div>
 
                 </div>
+                <div class="page__bd">
+                    <div class="weui-cells__title">2013级</div>
+                    <div class="weui-cells">
+                        <% for(var i=0;i<students2013.length;i++) {%>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p><%= students2013[i].name%></p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <% if (students2013[i].ktconfirm == 1) {%>
+                                已开题
+                                <%} else {%>
+                                未开题
+                                <%}%>
+                            </div>
+                        </div>
+                        <% }%>
+                    </div>
 
+                </div>
             </div>
         </div>
+        <div id="tab4" class="weui-tab__bd-item">
+            <header class='demos-header'>
+                <h1 class="demos-title">查询</h1>
+            </header>
+            <form method="post">
+            <div class="weui-cells__title">学生信息</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="namesearch" type=text name=studentname value='<%= studentname%>' placeholder="请输入学生姓名">
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">性别</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">入学年份</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">2016</option>
+                            <option value="2">2015</option>
+                            <option value="3">2014</option>
+                            <option value="4">2013</option>
+                            <option value="5">2012</option>
+                            <option value="6">2011</option>
+                            <option value="7">2010</option>
+                            <option value="8">2009</option>
+                            <option value="9">2008</option>
+                            <option value="10">2007</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+                <div class="weui-btn-area">
+                    <button type=submit class="weui-btn weui-btn_primary" id="showTooltips">确定</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="weui-tabbar">
+        <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <img src="../node_modules/jquery-weui/dist/demos/images/icon_nav_msg.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">应届学生</p>
+        </a>
+        <a href="#tab2" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="../node_modules/jquery-weui/dist/demos/images/icon_nav_button.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">非应届学生</p>
+        </a>
+        <a href="#tab3" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="../node_modules/jquery-weui/dist/demos/images/icon_nav_article.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">答辩状态</p>
+        </a>
+        <a href="#tab4" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon">
+        <img src="../node_modules/jquery-weui/dist/demos/images/icon_nav_search_bar.png" alt="">
+        </div>
+        <p class="weui-tabbar__label">查询</p>
+        </a>
     </div>
 </div>
-    <script>
-    $(function() {
-
-        var i=0;
-        $(".weui_navbar a").bind("click", function(){
-
-            //css操作
-            alert(i++);
-            //操作导航栏
-            $(".weui_bar_item_on").removeClass('weui_bar_item_on');
-            //console.log($(this).find("a"));
-            $(this).addClass("weui_bar_item_on");
-
-            //操作内容切换
-            $(".weui_tab_bd .weui_tab_bd_item_active").removeClass('weui_tab_bd_item_active');
-            var data_toggle =jQuery(this).attr("href");
-            $(data_toggle).addClass("weui_tab_bd_item_active");
-            // $(this).addClass("weui_tab_bd_item_active");
-
-        });
+<script src="../node_modules/jquery-weui/dist/lib/jquery-2.1.4.js"></script>
+<script src="../node_modules/jquery-weui/dist/lib/fastclick.js"></script>
+<script>
+    $("#showTooltips").click(function() {
+        var namesearch = $('#namesearch').val();
+        if(!namesearch) $.toptip('请输入学生姓名');
+        else $.toptip('提交成功', 'success');
     });
+</script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
 
-    </script>
-
+<script src="../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
 </body>
 </html>
